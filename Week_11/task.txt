@@ -1,0 +1,10 @@
+1. Write a program using pipes which simulates the following command:-
+
+   ls | grep ^p.*
+
+   Modify the code (use pipe) to sort the output of grep command in reverse order. (Use sort -r)
+
+
+2. Write a program which creates a process and guarantees no zombie process will be created?
+
+3. Implement client server communication using named pipes.

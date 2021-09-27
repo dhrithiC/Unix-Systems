@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+
+int main()
+{
+	int fd;
+	int pid;
+	
+	if((pid=fork())!=0)
+	{
+		fd=open("pipe", O_WRONLY);
+		char s[]="Hello";
+		write(fd, (void*)s, 5);
+		wait((void*)0);
+		close(fd);
+	}
+	else
+	{
+		fd=open("pipe", O_RDONLY);
+		char s[6];
+		read(fd, (void*)s, 5);
+		printf("%s\n", s);
+		close(fd);		
+	}
+	
+	return 0;
+}
